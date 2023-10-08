@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import UserService from './services/User.service';
 import { UserInfo } from "./models/User.interface";
 import { DecodedToken } from './models/DecodedToken.interface';
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -54,6 +55,7 @@ const Dashboard = () => {
                     )}
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

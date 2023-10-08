@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LoginService from './services/Login.service';
 import { useNavigate } from 'react-router';
+import { ToastContainer } from 'react-toastify';
 
 // Define the prop types for the component
 interface LoginProps { }
@@ -21,10 +22,17 @@ const Login: React.FC<LoginProps> = () => {
         e.preventDefault();
 
         // Post the data to the login service
-        await loginService.postLogin({ username: username, password: password })
-
-        // Navigate to the dashboard
-        navigate('/dashboard', { replace: true })
+        loginService.postLogin({ username, password })
+            .then((res) => {
+                // If successful, redirect to the dashboard
+                if (res) {
+                    navigate('/dashboard');
+                }
+            }
+            ).catch((err) => {
+                // If unsuccessful, show error message
+                console.log(err);
+            });
     }
 
     return (
@@ -123,6 +131,7 @@ const Login: React.FC<LoginProps> = () => {
                     </a>
                 </p>
             </div>
+            <ToastContainer />
         </div>
     );
 }

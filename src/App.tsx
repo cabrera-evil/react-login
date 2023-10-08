@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 
